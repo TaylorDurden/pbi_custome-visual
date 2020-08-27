@@ -1,16 +1,20 @@
 import * as React from "react";
 
 export interface State {
-    textLabel: string,
-    textValue: string,
+    typeName: string,
+    ytdvalue: string,
+    // yffvalue: string,
+    // gpyvalue: string,
     size: number,
     background?: string,
     borderWidth?: number
 }
 
 export const initialState: State = {
-    textLabel: "",
-    textValue: "",
+    typeName: "",
+    ytdvalue: "",
+    // yffvalue: "",
+    // gpyvalue: "",
     size: 200
 }
 
@@ -19,7 +23,7 @@ export class ReactCircleCard extends React.Component<{}, State>{
     private static updateCallback: (data: object) => void = null;
 
     public static update(newState: State) {
-        if(typeof ReactCircleCard.updateCallback === 'function'){
+        if (typeof ReactCircleCard.updateCallback === 'function') {
             ReactCircleCard.updateCallback(newState);
         }
     }
@@ -34,24 +38,32 @@ export class ReactCircleCard extends React.Component<{}, State>{
         ReactCircleCard.updateCallback = null;
     }
 
-    constructor(props: any){
+    constructor(props: any) {
         super(props);
         this.state = initialState;
     }
 
-    render(){
-        const { textLabel, textValue, size,background, borderWidth } = this.state;
-
-        const style: React.CSSProperties = { width: size, height: size,background, borderWidth };
-        const valueleft: React.CSSProperties = { marginLeft: "10%", width: "40%"};
+    render() {
+        // const { typeName, ytdvalue, yffvalue, gpyvalue, size, background, borderWidth } = this.state;
+        const { typeName, ytdvalue, size, background, borderWidth } = this.state;
+        const style: React.CSSProperties = { width: size, height: size, background, borderWidth };
         return (
             <div className="circleCard" style={style}>
-                <p>
-                    <em className="titletop">{textLabel}</em>
-                    <br/>
-                    <span>Performance over Plan</span>
-                    <br/>
-                    <em className="valueview" style={valueleft}>{textValue}</em><em className="valueview">{textValue}</em>
+                <p className="titletop lable">{typeName}</p>
+                <p className="lable">Performance over Plan</p>
+                <p className="lable">
+                    <em className="valueview">{ytdvalue}</em>
+                    <em className="valueview">0%</em>
+                    {/* <em className="valueview">{yffvalue}</em> */}
+                </p>
+                <p className="lable">
+                    <em className="valueview" >YTD</em>
+                    <em className="valueview">FY Fore</em>
+                </p>
+                <p className="lable">Growth over Past year</p>
+                <p className="lable">
+                    <em className="valueview">0%</em>
+                    {/* <em className="valueview">{gpyvalue}</em> */}
                 </p>
             </div>
         )

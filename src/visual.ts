@@ -29,7 +29,6 @@ export class Visual implements IVisual {
     constructor(options: VisualConstructorOptions) {
         this.reactRoot = React.createElement(ReactCircleCard, {});
         this.target = options.element;
-
         ReactDOM.render(this.reactRoot, this.target);
     }
 
@@ -44,8 +43,10 @@ export class Visual implements IVisual {
             ReactCircleCard.update({
                 borderWidth: object && object.circleThickness ? object.circleThickness : undefined,
                 background: object && object.circleColor ? object.circleColor : undefined,
-                textLabel: dataView.metadata.columns[0].displayName,
-                textValue: dataView.single.value.toString(),
+                typeName: dataView.metadata.columns[0].displayName,
+                ytdvalue: dataView.single.value.toString(),
+                // yffvalue: dataView.metadata.columns[0].displayName,
+                // gpyvalue: dataView.single.value.toString(),
                 size,
             });
         } else {

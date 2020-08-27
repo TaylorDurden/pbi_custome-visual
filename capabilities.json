@@ -1,8 +1,13 @@
 {
     "dataRoles": [
         {
-            "displayName": "Measure Data",
-            "name": "measure",
+            "displayName": "TypeName",
+            "name": "TypeName",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "YTD",
+            "name": "YTD",
             "kind": "Measure"
         }
     ],
@@ -35,13 +40,13 @@
         {
             "conditions": [
                 {
-                    "measure": {
+                    "YTD": {
                         "max": 1
                     }
                 }
             ],
             "single": {
-                "role": "measure"
+                "role": "YTD"
             }
         }
     ]
