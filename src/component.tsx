@@ -3,19 +3,22 @@ import * as React from "react";
 export interface State {
     typeName: string,
     ytdvalue: string,
-    // yffvalue: string,
-    // gpyvalue: string,
-    size: number,
+    ytd_background_color: string,
+    yffvalue: string,
+    yff_background_color: string,
+    gpyvalue: string,
+    gpy_background_color: string,
     background?: string,
-    borderWidth?: number
 }
 
 export const initialState: State = {
     typeName: "",
     ytdvalue: "",
-    // yffvalue: "",
-    // gpyvalue: "",
-    size: 200
+    ytd_background_color: "#fff",
+    yff_background_color: "#fff",
+    gpy_background_color: "#fff",
+    yffvalue: "",
+    gpyvalue: "",
 }
 
 
@@ -44,27 +47,32 @@ export class ReactCircleCard extends React.Component<{}, State>{
     }
 
     render() {
-        // const { typeName, ytdvalue, yffvalue, gpyvalue, size, background, borderWidth } = this.state;
-        const { typeName, ytdvalue, size, background, borderWidth } = this.state;
-        const style: React.CSSProperties = { width: size, height: size, background, borderWidth };
+        const { typeName, ytdvalue, yffvalue, gpyvalue, background, ytd_background_color, yff_background_color, gpy_background_color } = this.state;
+        const ytdbgc: React.CSSProperties = { backgroundColor: ytd_background_color };
+        const fyybgc: React.CSSProperties = { backgroundColor: yff_background_color };
+        const gpybgc: React.CSSProperties = { backgroundColor: gpy_background_color };
         return (
-            <div className="circleCard" style={style}>
-                <p className="titletop lable">{typeName}</p>
-                <p className="lable">Performance over Plan</p>
-                <p className="lable">
-                    <em className="valueview">{ytdvalue}</em>
-                    <em className="valueview">0%</em>
-                    {/* <em className="valueview">{yffvalue}</em> */}
-                </p>
-                <p className="lable">
-                    <em className="valueview" >YTD</em>
-                    <em className="valueview">FY Fore</em>
-                </p>
-                <p className="lable">Growth over Past year</p>
-                <p className="lable">
-                    <em className="valueview">0%</em>
-                    {/* <em className="valueview">{gpyvalue}</em> */}
-                </p>
+            <div className="container" >
+                <div className="title-top label">{typeName}</div>
+                <div className="label">Performance over Plan</div>
+                <div className="label">
+                    <div style={{ float: "left", width: "50%" }}>
+                        <div style={{ float: "right", width: "80px", textAlign: "center", margin: "0 10px" }}>
+                            <p className="value-view" style={ytdbgc}>{ytdvalue}</p>
+                            <p className="value-label" >YTD</p>
+                        </div>
+                    </div>
+                    <div style={{ float: "right", width: "50%" }}>
+                        <div style={{ float: "left", width: "80px", textAlign: "center", margin: "0 10px" }}>
+                            <p className="value-view" style={fyybgc}>{yffvalue}</p>
+                            <p className="value-label">FY Fore</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="label">Growth over Past year</div>
+                <div className="label">
+                    <span className="value-view" style={gpybgc}>{gpyvalue}</span>
+                </div>
             </div>
         )
     }

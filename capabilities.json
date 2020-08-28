@@ -9,6 +9,16 @@
             "displayName": "YTD",
             "name": "YTD",
             "kind": "Measure"
+        },
+        {
+            "displayName": "FY Fore",
+            "name": "FyFore",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Growth over Past year",
+            "name": "GOPY",
+            "kind": "Measure"
         }
     ],
     "objects": {
@@ -43,10 +53,48 @@
                     "YTD": {
                         "max": 1
                     }
+                },
+                {
+                    "TypeName": {
+                        "max": 1
+                    }
+                },
+                {
+                    "FyFore": {
+                        "max": 1
+                    }
+                },
+                {
+                    "GOPY": {
+                        "max": 1
+                    }
                 }
             ],
-            "single": {
-                "role": "YTD"
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "TypeName"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "YTD"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "FyFore"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "GOPY"
+                            }
+                        }
+                    ]
+                }
             }
         }
     ]
