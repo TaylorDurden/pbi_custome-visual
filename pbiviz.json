@@ -1,12 +1,12 @@
 {
     "visual": {
-        "name": "reactCircleCard",
-        "displayName": "ReactCircleCard",
-        "guid": "reactCircleCard9A345A4BE9344FC09BC15E03F98169C0",
+        "name": "rate-performance",
+        "displayName": "rate-performance",
+        "guid": "rate-performance9A345A4BE9344FC09BC15E03F98169C0",
         "visualClassName": "Visual",
         "version": "1.0.0",
-        "description": "aa",
-        "supportUrl": "https://www.baidu.com",
+        "description": "Rate related visual.",
+        "supportUrl": "https://docs.microsoft.com/en-us/power-bi/developer/visuals/custom-visual-develop-tutorial",
         "gitHubUrl": ""
     },
     "apiVersion": "2.6.0",
