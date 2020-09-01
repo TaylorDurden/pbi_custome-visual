@@ -3,22 +3,24 @@ import * as React from "react";
 export interface State {
     typeName: string,
     ytdvalue: string,
-    ytd_background_color: string,
+    ytd_css_property: any,
     yffvalue: string,
-    yff_background_color: string,
+    yff_css_property: any,
     gpyvalue: string,
-    gpy_background_color: string,
-    background?: string,
+    gpy_css_property: any,
 }
 
+const DEFAULT_CSS_PROPERTY = { backgroundColor: "#fff", color: "#000" };
+const NA = "N.A";
+
 export const initialState: State = {
-    typeName: "",
-    ytdvalue: "",
-    ytd_background_color: "#fff",
-    yff_background_color: "#fff",
-    gpy_background_color: "#fff",
-    yffvalue: "",
-    gpyvalue: "",
+    typeName: "Title",
+    ytdvalue: NA,
+    ytd_css_property: DEFAULT_CSS_PROPERTY,
+    yffvalue: NA,
+    yff_css_property: DEFAULT_CSS_PROPERTY,
+    gpyvalue: NA,
+    gpy_css_property: DEFAULT_CSS_PROPERTY,
 }
 
 
@@ -47,12 +49,13 @@ export class ReactCircleCard extends React.Component<{}, State>{
     }
 
     render() {
-        const { typeName, ytdvalue, yffvalue, gpyvalue, background, ytd_background_color, yff_background_color, gpy_background_color } = this.state;
-        const ytdbgc: React.CSSProperties = { backgroundColor: ytd_background_color };
-        const fyybgc: React.CSSProperties = { backgroundColor: yff_background_color };
-        const gpybgc: React.CSSProperties = { backgroundColor: gpy_background_color };
+        // const { typeName, ytdvalue, yffvalue, gpyvalue, ytd_background_color, yff_background_color, gpy_background_color } = this.state;
+        const { typeName, ytdvalue, yffvalue, gpyvalue, ytd_css_property, yff_css_property, gpy_css_property } = this.state;
+        const ytdbgc: React.CSSProperties = { ...ytd_css_property };
+        const fyybgc: React.CSSProperties = { ...yff_css_property };
+        const gpybgc: React.CSSProperties = { ...gpy_css_property };
         return (
-            <div className="container" >
+            <div className="container">
                 <div className="title-top label">{typeName}</div>
                 <div className="label">Performance over Plan</div>
                 <div className="label">

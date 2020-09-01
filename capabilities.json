@@ -3,49 +3,28 @@
         {
             "displayName": "TypeName",
             "name": "TypeName",
+            "displayNameKey": "TypeName",
             "kind": "Grouping"
         },
         {
             "displayName": "YTD",
             "name": "YTD",
+            "displayNameKey": "YTD",
             "kind": "Measure"
         },
         {
             "displayName": "FY Fore",
             "name": "FyFore",
+            "displayNameKey": "FyFore",
             "kind": "Measure"
         },
         {
             "displayName": "Growth over Past year",
             "name": "GOPY",
+            "displayNameKey": "GOPY",
             "kind": "Measure"
         }
     ],
-    "objects": {
-        "circle": {
-            "displayName": "Circle",
-            "properties": {
-                "circleColor": {
-                    "displayName": "Color",
-                    "description": "The fill color of the circle.",
-                    "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
-                    }
-                },
-                "circleThickness": {
-                    "displayName": "Thickness",
-                    "description": "The circle thickness.",
-                    "type": {
-                        "numeric": true
-                    }
-                }
-            }
-        }
-    },
     "dataViewMappings": [
         {
             "conditions": [

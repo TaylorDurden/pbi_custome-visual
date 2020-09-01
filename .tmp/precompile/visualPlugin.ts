@@ -5,8 +5,8 @@ import VisualConstructorOptions = powerbiVisualsApi.extensibility.visual.VisualC
 var powerbiKey: any = "powerbi";
 var powerbi: any = window[powerbiKey];
 
-var reactCircleCard9A345A4BE9344FC09BC15E03F98169C0: IVisualPlugin = {
-    name: 'reactCircleCard9A345A4BE9344FC09BC15E03F98169C0',
+var rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG: IVisualPlugin = {
+    name: 'rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG',
     displayName: 'rate-performance',
     class: 'Visual',
     apiVersion: '2.6.0',
@@ -23,7 +23,7 @@ var reactCircleCard9A345A4BE9344FC09BC15E03F98169C0: IVisualPlugin = {
 if (typeof powerbi !== "undefined") {
     powerbi.visuals = powerbi.visuals || {};
     powerbi.visuals.plugins = powerbi.visuals.plugins || {};
-    powerbi.visuals.plugins["reactCircleCard9A345A4BE9344FC09BC15E03F98169C0"] = reactCircleCard9A345A4BE9344FC09BC15E03F98169C0;
+    powerbi.visuals.plugins["rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG"] = rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG;
 }
 
-export default reactCircleCard9A345A4BE9344FC09BC15E03F98169C0;
+export default rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG;
