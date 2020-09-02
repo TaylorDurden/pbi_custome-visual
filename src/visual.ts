@@ -63,7 +63,7 @@ export class Visual implements IVisual {
     }
 
     private formatValueString(number: number) {
-        return isNaN(number) ? NA : (number * 100).toString() + "%";
+        return isNaN(number) ? NA : Math.round((number * 100)).toString() + "%";
     }
 
     private clear() {
@@ -72,13 +72,13 @@ export class Visual implements IVisual {
 
     private GetCssProperty(val: number) {
         if (val >= 0) {
-            return { backgroundColor: "#65ceb6", color: "#fff" };//绿色
+            return { backgroundColor: "#6ECEB2", color: "#ffffff" };//绿色
         } else if (val < 0 && val >= -0.10) {
-            return { backgroundColor: "#e2d63f", color: "#fff" };//黄色
+            return { backgroundColor: "#F1BA24", color: "#ffffff" };//黄色
         } else if (val < -0.10) {
-            return { backgroundColor: "#ea7d0c", color: "#fff" };//橙色
+            return { backgroundColor: "#EB8B43", color: "#ffffff" };//橙色
         } else {//N.A
-            return { backgroundColor: "#fff", color: "#000", fontWeight: "bold" };
+            return { backgroundColor: "#EEF1F4", color: "#0A3B32" };
         }
     }
 

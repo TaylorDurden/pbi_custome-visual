@@ -49,11 +49,82 @@ export class ReactCircleCard extends React.Component<{}, State>{
     }
 
     render() {
-        // const { typeName, ytdvalue, yffvalue, gpyvalue, ytd_background_color, yff_background_color, gpy_background_color } = this.state;
         const { typeName, ytdvalue, yffvalue, gpyvalue, ytd_css_property, yff_css_property, gpy_css_property } = this.state;
         const ytdbgc: React.CSSProperties = { ...ytd_css_property };
         const fyybgc: React.CSSProperties = { ...yff_css_property };
         const gpybgc: React.CSSProperties = { ...gpy_css_property };
+        var CountryMap = {
+            Icon: [
+                {
+                    name: "HONGKONG",
+                    displayName: "HK",
+                    path: "../assets/singleVisual/icon/HongKong.png"
+                }, {
+                    name: "INDONESIA",
+                    displayName: "ID",
+                    path: "../assets/singleVisual/icon/Indonesia.png"
+                }, {
+                    name: "JAPAN",
+                    displayName: "JP",
+                    path: "../assets/singleVisual/icon/Japan.png"
+                }, {
+                    name: "MALAYSIA",
+                    displayName: "MY",
+                    path: "../assets/singleVisual/icon/Malaysia.png"
+                }, {
+                    name: "PHILIPPINES",
+                    displayName: "PH",
+                    path: "../assets/singleVisual/icon/Philippines.png"
+                }, {
+                    name: "SINGAPORE",
+                    displayName: "SG",
+                    path: "../assets/singleVisual/icon/Singapore.png"
+                }, {
+                    name: "THAILAND",
+                    displayName: "TH",
+                    path: "../assets/singleVisual/icon/Thailand.png"
+                }, {
+                    name: "VIETNAM",
+                    displayName: "VN",
+                    path: "../assets/singleVisual/icon/Vietnam.png"
+                }
+            ],
+            backgroundImage: [
+                {
+                    name: "HONGKONG",
+                    displayName: "HK",
+                    path: "../assets/singleVisual/map/HongKong.png"
+                }, {
+                    name: "INDONESIA",
+                    displayName: "ID",
+                    path: "../assets/singleVisual/map/Indonesia.png"
+                }, {
+                    name: "JAPAN",
+                    displayName: "JP",
+                    path: "../assets/singleVisual/map/Japan.png"
+                }, {
+                    name: "MALAYSIA",
+                    displayName: "MY",
+                    path: "../assets/singleVisual/map/Malaysia.png"
+                }, {
+                    name: "PHILIPPINES",
+                    displayName: "PH",
+                    path: "../assets/singleVisual/map/Philippines.png"
+                }, {
+                    name: "SINGAPORE",
+                    displayName: "SG",
+                    path: "../assets/singleVisual/map/Singapore.png"
+                }, {
+                    name: "THAILAND",
+                    displayName: "TH",
+                    path: "../assets/singleVisual/map/Thailand.png"
+                }, {
+                    name: "VIETNAM",
+                    displayName: "VN",
+                    path: "../assets/singleVisual/map/Vietnam.png"
+                }
+            ]
+        }
         return (
             <div className="container">
                 <div className="title-top label">{typeName}</div>
