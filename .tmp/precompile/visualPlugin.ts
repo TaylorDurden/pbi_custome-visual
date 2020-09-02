@@ -7,7 +7,7 @@ var powerbi: any = window[powerbiKey];
 
 var reactCircleCard9A345A4BE9344FC09BC15E03F98169C0: IVisualPlugin = {
     name: 'reactCircleCard9A345A4BE9344FC09BC15E03F98169C0',
-    displayName: 'ReactCircleCard',
+    displayName: 'rate-performance',
     class: 'Visual',
     apiVersion: '2.6.0',
     create: (options: VisualConstructorOptions) => {
