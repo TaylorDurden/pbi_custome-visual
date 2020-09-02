@@ -3,22 +3,24 @@ import * as React from "react";
 export interface State {
     typeName: string,
     ytdvalue: string,
-    ytd_background_color: string,
+    ytd_css_property: any,
     yffvalue: string,
-    yff_background_color: string,
+    yff_css_property: any,
     gpyvalue: string,
-    gpy_background_color: string,
-    background?: string,
+    gpy_css_property: any,
 }
 
+const DEFAULT_CSS_PROPERTY = { backgroundColor: "#fff", color: "#000" };
+const NA = "N.A";
+
 export const initialState: State = {
-    typeName: "",
-    ytdvalue: "",
-    ytd_background_color: "#fff",
-    yff_background_color: "#fff",
-    gpy_background_color: "#fff",
-    yffvalue: "",
-    gpyvalue: "",
+    typeName: "Title",
+    ytdvalue: NA,
+    ytd_css_property: DEFAULT_CSS_PROPERTY,
+    yffvalue: NA,
+    yff_css_property: DEFAULT_CSS_PROPERTY,
+    gpyvalue: NA,
+    gpy_css_property: DEFAULT_CSS_PROPERTY,
 }
 
 
@@ -47,12 +49,84 @@ export class ReactCircleCard extends React.Component<{}, State>{
     }
 
     render() {
-        const { typeName, ytdvalue, yffvalue, gpyvalue, background, ytd_background_color, yff_background_color, gpy_background_color } = this.state;
-        const ytdbgc: React.CSSProperties = { backgroundColor: ytd_background_color };
-        const fyybgc: React.CSSProperties = { backgroundColor: yff_background_color };
-        const gpybgc: React.CSSProperties = { backgroundColor: gpy_background_color };
+        const { typeName, ytdvalue, yffvalue, gpyvalue, ytd_css_property, yff_css_property, gpy_css_property } = this.state;
+        const ytdbgc: React.CSSProperties = { ...ytd_css_property };
+        const fyybgc: React.CSSProperties = { ...yff_css_property };
+        const gpybgc: React.CSSProperties = { ...gpy_css_property };
+        var CountryMap = {
+            Icon: [
+                {
+                    name: "HONGKONG",
+                    displayName: "HK",
+                    path: "../assets/singleVisual/icon/HongKong.png"
+                }, {
+                    name: "INDONESIA",
+                    displayName: "ID",
+                    path: "../assets/singleVisual/icon/Indonesia.png"
+                }, {
+                    name: "JAPAN",
+                    displayName: "JP",
+                    path: "../assets/singleVisual/icon/Japan.png"
+                }, {
+                    name: "MALAYSIA",
+                    displayName: "MY",
+                    path: "../assets/singleVisual/icon/Malaysia.png"
+                }, {
+                    name: "PHILIPPINES",
+                    displayName: "PH",
+                    path: "../assets/singleVisual/icon/Philippines.png"
+                }, {
+                    name: "SINGAPORE",
+                    displayName: "SG",
+                    path: "../assets/singleVisual/icon/Singapore.png"
+                }, {
+                    name: "THAILAND",
+                    displayName: "TH",
+                    path: "../assets/singleVisual/icon/Thailand.png"
+                }, {
+                    name: "VIETNAM",
+                    displayName: "VN",
+                    path: "../assets/singleVisual/icon/Vietnam.png"
+                }
+            ],
+            backgroundMapImage: [
+                {
+                    name: "HONGKONG",
+                    displayName: "HK",
+                    path: "../assets/singleVisual/map/hongkong.png"
+                }, {
+                    name: "INDONESIA",
+                    displayName: "ID",
+                    path: "../assets/singleVisual/map/indonesia.png"
+                }, {
+                    name: "JAPAN",
+                    displayName: "JP",
+                    path: "../assets/singleVisual/map/japan.png"
+                }, {
+                    name: "MALAYSIA",
+                    displayName: "MY",
+                    path: "../assets/singleVisual/map/malaysia.png"
+                }, {
+                    name: "PHILIPPINES",
+                    displayName: "PH",
+                    path: "../assets/singleVisual/map/philippines.png"
+                }, {
+                    name: "SINGAPORE",
+                    displayName: "SG",
+                    path: "../assets/singleVisual/map/singapore.png"
+                }, {
+                    name: "THAILAND",
+                    displayName: "TH",
+                    path: "../assets/singleVisual/map/thailand.png"
+                }, {
+                    name: "VIETNAM",
+                    displayName: "VN",
+                    path: "../assets/singleVisual/map/vietnam.png"
+                }
+            ]
+        }
         return (
-            <div className="container" >
+            <div className="container">
                 <div className="title-top label">{typeName}</div>
                 <div className="label">Performance over Plan</div>
                 <div className="label">

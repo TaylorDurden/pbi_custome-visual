@@ -2,7 +2,7 @@
     "visual": {
         "name": "rate-performance",
         "displayName": "rate-performance",
-        "guid": "rate-performance9A345A4BE9344FC09BC15E03F98169C0",
+        "guid": "rateperformance9A345A4BE9344FC09BC15E03F98169C0",
         "visualClassName": "Visual",
         "version": "1.0.0",
         "description": "Rate related visual.",

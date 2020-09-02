@@ -4,10 +4,9 @@ import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
 export class CircleSettings {
-    public circleColor: string = "white";
-    public circleThickness: number = 2;
+    public BackgroundColor: string = "white";
 }
 
 export class VisualSettings extends DataViewObjectsParser {
-    public circle: CircleSettings = new CircleSettings();
+    public Background_color: CircleSettings = new CircleSettings();
 }
