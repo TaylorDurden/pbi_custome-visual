@@ -89,39 +89,39 @@ export class ReactCircleCard extends React.Component<{}, State>{
                     path: "../assets/singleVisual/icon/Vietnam.png"
                 }
             ],
-            backgroundImage: [
+            backgroundMapImage: [
                 {
                     name: "HONGKONG",
                     displayName: "HK",
-                    path: "../assets/singleVisual/map/HongKong.png"
+                    path: "../assets/singleVisual/map/hongkong.png"
                 }, {
                     name: "INDONESIA",
                     displayName: "ID",
-                    path: "../assets/singleVisual/map/Indonesia.png"
+                    path: "../assets/singleVisual/map/indonesia.png"
                 }, {
                     name: "JAPAN",
                     displayName: "JP",
-                    path: "../assets/singleVisual/map/Japan.png"
+                    path: "../assets/singleVisual/map/japan.png"
                 }, {
                     name: "MALAYSIA",
                     displayName: "MY",
-                    path: "../assets/singleVisual/map/Malaysia.png"
+                    path: "../assets/singleVisual/map/malaysia.png"
                 }, {
                     name: "PHILIPPINES",
                     displayName: "PH",
-                    path: "../assets/singleVisual/map/Philippines.png"
+                    path: "../assets/singleVisual/map/philippines.png"
                 }, {
                     name: "SINGAPORE",
                     displayName: "SG",
-                    path: "../assets/singleVisual/map/Singapore.png"
+                    path: "../assets/singleVisual/map/singapore.png"
                 }, {
                     name: "THAILAND",
                     displayName: "TH",
-                    path: "../assets/singleVisual/map/Thailand.png"
+                    path: "../assets/singleVisual/map/thailand.png"
                 }, {
                     name: "VIETNAM",
                     displayName: "VN",
-                    path: "../assets/singleVisual/map/Vietnam.png"
+                    path: "../assets/singleVisual/map/vietnam.png"
                 }
             ]
         }
