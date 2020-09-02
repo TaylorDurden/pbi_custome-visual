@@ -3,7 +3,7 @@
   "scripts": {
     "pbiviz": "pbiviz",
     "start": "pbiviz start",
-    "package": "pbiviz ag",
+    "package": "pbiviz package",
     "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "dependencies": {
