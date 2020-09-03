@@ -52,7 +52,7 @@ export class Visual implements IVisual {
                 ytd_css_property: this.GetCssProperty(ytd),
                 yff_css_property: this.GetCssProperty(yff),
                 gpy_css_property: this.GetCssProperty(gpy),
-                typeName: name_index === -1 ? NA : dataView.table.rows[0][name_index].toString(),
+                typeName: name_index === -1 ? "Title" : dataView.table.rows[0][name_index].toString(),
                 ytdvalue: this.formatValueString(ytd),
                 yffvalue: this.formatValueString(yff),
                 gpyvalue: this.formatValueString(gpy),
