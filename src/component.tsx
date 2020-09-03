@@ -137,7 +137,7 @@ export class ReactCircleCard extends React.Component<{}, State>{
         const gpybgc: React.CSSProperties = { ...gpy_css_property };
 
 
-        var backgroundImage = typeName.toUpperCase() === "GROUP" ? {} : { background: "url(" + this.GetIconOrMapPath("map", typeName) + ") no-repeat 100% 100%" };
+        var backgroundImage = typeName.toUpperCase() === "GROUP" ? {} : { backgroundImage: "url(" + this.GetIconOrMapPath("map", typeName) + ")", backgroundSize: "contain", backgroundPosition: "50% 20%", backgroundOrigin: "content", backgroundRepeat: "no-repeat" };
         console.log(typeName);
         return (
             <div className="container" style={backgroundImage}>
