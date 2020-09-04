@@ -229,27 +229,13 @@ export class ReactCircleCard extends React.Component<{}, State> {
         return (
             <div className="container" style={backgroundImage}>
                 <div className="title-top label">
-                    {typeName.toUpperCase() === "GROUP" || typeName === "Title" ? (
-                        ""
-                    ) : (
-                            <img
-                                className="title-icon"
-                                src={this.GetIconOrMapPath("icon", typeName)}
-                            ></img>
-                        )}
+                    {typeName.toUpperCase() === "GROUP" || typeName === "Title" ? ("") : (<img className="title-icon" src={this.GetIconOrMapPath("icon", typeName)}></img>)}
                     <span>{typeName}</span>
                 </div>
                 <div className="label">Performance over Plan</div>
                 <div className="label">
                     <div style={{ float: "left", width: "50%" }}>
-                        <div
-                            style={{
-                                float: "right",
-                                width: "80px",
-                                textAlign: "center",
-                                margin: "0 10px",
-                            }}
-                        >
+                        <div style={{ float: "right", width: "70px", textAlign: "center", margin: "0 5px", }}>
                             <p className="value-view" style={ytdbgc}>
                                 {ytdvalue}
                             </p>
@@ -257,14 +243,7 @@ export class ReactCircleCard extends React.Component<{}, State> {
                         </div>
                     </div>
                     <div style={{ float: "right", width: "50%" }}>
-                        <div
-                            style={{
-                                float: "left",
-                                width: "80px",
-                                textAlign: "center",
-                                margin: "0 10px",
-                            }}
-                        >
+                        <div style={{ float: "left", width: "70px", textAlign: "center", margin: "0 5px", }}>
                             <p className="value-view" style={fyybgc}>
                                 {yffvalue}
                             </p>
