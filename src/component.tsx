@@ -86,7 +86,7 @@ const CountryMap = {
 }
 
 export const initialState: State = {
-    typeName: "Title",
+    typeName: "Group",
     ytdvalue: NA,
     ytd_css_property: DEFAULT_CSS_PROPERTY,
     yffvalue: NA,
@@ -136,12 +136,11 @@ export class ReactCircleCard extends React.Component<{}, State>{
         const fyybgc: React.CSSProperties = { ...yff_css_property };
         const gpybgc: React.CSSProperties = { ...gpy_css_property };
 
-
         var backgroundImage = typeName.toUpperCase() === "GROUP" ? {} : { backgroundImage: "url(" + this.GetIconOrMapPath("map", typeName) + ")", backgroundSize: "contain", backgroundPosition: "50% 20%", backgroundOrigin: "content", backgroundRepeat: "no-repeat" };
-        console.log(typeName);
+
         return (
             <div className="container" style={backgroundImage}>
-                <div className="title-top label">{typeName.toUpperCase() === "GROUP" || typeName === "Title" ? "" : <img className="title-icon" src={this.GetIconOrMapPath("icon", typeName)}></img>}<span>{typeName}</span></div>
+                <div className="title-top label">{typeName.toUpperCase() === "GROUP" || typeName === "Title" ? "Group" : <img className="title-icon" src={this.GetIconOrMapPath("icon", typeName)}></img>}<span>{typeName}</span></div>
                 <div className="label">Performance over Plan</div>
                 <div className="label">
                     <div style={{ float: "left", width: "50%" }}>
