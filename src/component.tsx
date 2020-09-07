@@ -150,7 +150,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  typeName: "Group",
+  typeName: NA,
   ytdvalue: NA,
   ytd_css_property: DEFAULT_CSS_PROPERTY,
   yffvalue: NA,
@@ -180,6 +180,24 @@ export class GroupCellCard extends React.Component<{}, State> {
 
   public componentWillUnmount() {
     GroupCellCard.updateCallback = null;
+  }
+
+  private canTransform2Country(type, typename) {
+    var data =
+      type === "icon" ? CountryMap.Icon : CountryMap.backgroundMapImage;
+    for (var i = 0, len = data.length; i < len; i++) {
+      var newTypeName = typename.replace(/\s*/g, "");
+      // console.log("data[i]: ", data[i]);
+      if (
+        data[i].name === newTypeName.toUpperCase() ||
+        data[i].code === newTypeName.toUpperCase() ||
+        newTypeName.toUpperCase().indexOf(data[i].name) !== -1 ||
+        newTypeName.toUpperCase().indexOf(data[i].code) !== -1
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private GetIconOrMapPath(type, typename) {
@@ -222,7 +240,7 @@ export class GroupCellCard extends React.Component<{}, State> {
     const gpybgc: React.CSSProperties = { ...gpy_css_property };
 
     var backgroundImage =
-      typeName.toUpperCase() === "GROUP"
+      typeName.toUpperCase() === NA
         ? {
             backgroundColor: backgroudColor,
             borderRadius: borderRadius,
@@ -242,13 +260,13 @@ export class GroupCellCard extends React.Component<{}, State> {
     return (
       <div className="container" style={backgroundImage}>
         <div className="title-top label">
-          {typeName.toUpperCase() === "GROUP" || typeName === "Title" ? (
-            ""
-          ) : (
+          {this.canTransform2Country("icon", typeName) ? (
             <img
               className="title-icon"
               src={this.GetIconOrMapPath("icon", typeName)}
             ></img>
+          ) : (
+            ""
           )}
           <span>{typeName}</span>
         </div>

@@ -51,9 +51,7 @@ export class Visual implements IVisual {
       //     dataView.table.rows[0][name_index].toString()
       //   );
       const typeName =
-        name_index === -1
-          ? "Group"
-          : dataView.table.rows[0][name_index].toString();
+        name_index === -1 ? NA : dataView.table.rows[0][name_index].toString();
 
       const ytd: number =
         ytd_index === -1
