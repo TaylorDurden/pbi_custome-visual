@@ -30,7 +30,7 @@
       "displayName": "Group Cell",
       "properties": {
         "backgroundColor": {
-          "displayName": "background-color",
+          "displayName": "background color",
           "description": "The fill color of the group-cell background.",
           "type": {
             "fill": {
@@ -41,10 +41,16 @@
           }
         },
         "borderRadius": {
-          "displayName": "border-radius",
+          "displayName": "border radius",
           "description": "The border radius of the group-cell.",
           "type": {
             "numeric": true
+          }
+        },
+        "groupName": {
+          "displayName": "group name",
+          "type": {
+            "text": true
           }
         }
       }

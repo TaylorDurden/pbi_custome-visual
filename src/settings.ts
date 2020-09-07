@@ -6,6 +6,7 @@ import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 export class GroupCellSettings {
   public backgroundColor: string = "white";
   public borderRadius: number = 0;
+  public groupName: string = "";
 }
 
 export class VisualSettings extends DataViewObjectsParser {

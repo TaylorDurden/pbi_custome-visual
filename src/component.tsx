@@ -147,6 +147,7 @@ export interface State {
   gpy_css_property: any;
   backgroudColor: any;
   borderRadius: number;
+  groupName: string;
 }
 
 export const initialState: State = {
@@ -159,6 +160,7 @@ export const initialState: State = {
   gpy_css_property: DEFAULT_CSS_PROPERTY,
   backgroudColor: "white",
   borderRadius: 0,
+  groupName: "",
 };
 
 export class GroupCellCard extends React.Component<{}, State> {
@@ -183,6 +185,7 @@ export class GroupCellCard extends React.Component<{}, State> {
   }
 
   private canTransform2Country(type, typename) {
+    if (!typename || typename !== NA) return false;
     var data =
       type === "icon" ? CountryMap.Icon : CountryMap.backgroundMapImage;
     for (var i = 0, len = data.length; i < len; i++) {
@@ -218,6 +221,11 @@ export class GroupCellCard extends React.Component<{}, State> {
     return "";
   }
 
+  private getTypeName(groupName, typeName) {
+    if (groupName) return groupName;
+    return typeName || typeName !== NA ? typeName : NA;
+  }
+
   constructor(props: any) {
     super(props);
     this.state = initialState;
@@ -234,6 +242,7 @@ export class GroupCellCard extends React.Component<{}, State> {
       gpy_css_property,
       backgroudColor,
       borderRadius,
+      groupName,
     } = this.state;
     const ytdbgc: React.CSSProperties = { ...ytd_css_property };
     const fyybgc: React.CSSProperties = { ...yff_css_property };
@@ -257,6 +266,7 @@ export class GroupCellCard extends React.Component<{}, State> {
           };
 
     console.log("backgroundImage css style: ", backgroundImage);
+    console.log("typeName: ", typeName);
     return (
       <div className="container" style={backgroundImage}>
         <div className="title-top label">
@@ -268,7 +278,7 @@ export class GroupCellCard extends React.Component<{}, State> {
           ) : (
             ""
           )}
-          <span>{typeName}</span>
+          <span>{this.getTypeName(groupName, typeName)}</span>
         </div>
         <div className="label">Performance over Plan</div>
         <div className="label">

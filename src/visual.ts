@@ -68,6 +68,7 @@ export class Visual implements IVisual {
       //   console.log("this.settings: ", this.settings);
       const containerBackgroudColor = this.settings.groupCell.backgroundColor;
       const borderRadius = this.settings.groupCell.borderRadius;
+      const groupName = this.settings.groupCell.groupName;
 
       GroupCellCard.update({
         ytd_css_property: this.GetCssProperty(ytd),
@@ -76,6 +77,7 @@ export class Visual implements IVisual {
         typeName: typeName,
         backgroudColor: containerBackgroudColor,
         borderRadius: borderRadius,
+        groupName: groupName,
         ytdvalue: this.formatValueString(ytd),
         yffvalue: this.formatValueString(yff),
         gpyvalue: this.formatValueString(gpy),
