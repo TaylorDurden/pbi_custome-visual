@@ -161,25 +161,25 @@ export const initialState: State = {
   borderRadius: 0,
 };
 
-export class ReactCircleCard extends React.Component<{}, State> {
+export class GroupCellCard extends React.Component<{}, State> {
   private static updateCallback: (data: object) => void = null;
 
   public static update(newState: State) {
-    if (typeof ReactCircleCard.updateCallback === "function") {
-      ReactCircleCard.updateCallback(newState);
+    if (typeof GroupCellCard.updateCallback === "function") {
+      GroupCellCard.updateCallback(newState);
     }
   }
 
   public state: State = initialState;
 
   public componentWillMount() {
-    ReactCircleCard.updateCallback = (newState: State): void => {
+    GroupCellCard.updateCallback = (newState: State): void => {
       this.setState(newState);
     };
   }
 
   public componentWillUnmount() {
-    ReactCircleCard.updateCallback = null;
+    GroupCellCard.updateCallback = null;
   }
 
   private GetIconOrMapPath(type, typename) {
@@ -199,6 +199,7 @@ export class ReactCircleCard extends React.Component<{}, State> {
     }
     return "";
   }
+
   constructor(props: any) {
     super(props);
     this.state = initialState;
@@ -222,7 +223,10 @@ export class ReactCircleCard extends React.Component<{}, State> {
 
     var backgroundImage =
       typeName.toUpperCase() === "GROUP"
-        ? {}
+        ? {
+            backgroundColor: backgroudColor,
+            borderRadius: borderRadius,
+          }
         : {
             backgroundImage:
               "url(" + this.GetIconOrMapPath("map", typeName) + ")",
@@ -233,6 +237,8 @@ export class ReactCircleCard extends React.Component<{}, State> {
             backgroundColor: backgroudColor,
             borderRadius: borderRadius,
           };
+
+    console.log("backgroundImage css style: ", backgroundImage);
     return (
       <div className="container" style={backgroundImage}>
         <div className="title-top label">
@@ -290,4 +296,4 @@ export class ReactCircleCard extends React.Component<{}, State> {
   }
 }
 
-export default ReactCircleCard;
+export default GroupCellCard;
