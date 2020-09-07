@@ -20,82 +20,113 @@ import IViewport = powerbi.IViewport;
 const NA = "N.A";
 
 export class Visual implements IVisual {
+  private viewport: IViewport;
+  private target: HTMLElement;
+  private reactRoot: React.ComponentElement<any, any>;
+  private settings: VisualSettings;
 
-    private viewport: IViewport;
-    private target: HTMLElement;
-    private reactRoot: React.ComponentElement<any, any>;
-    private settings: VisualSettings;
+  constructor(options: VisualConstructorOptions) {
+    this.reactRoot = React.createElement(ReactCircleCard, {});
+    this.target = options.element;
+    ReactDOM.render(this.reactRoot, this.target);
+  }
 
-    constructor(options: VisualConstructorOptions) {
-        this.reactRoot = React.createElement(ReactCircleCard, {});
-        this.target = options.element;
-        ReactDOM.render(this.reactRoot, this.target);
+  public update(options: VisualUpdateOptions) {
+    if (options.dataViews && options.dataViews[0]) {
+      const dataView: DataView = options.dataViews[0];
+
+      this.settings = VisualSettings.parse(dataView) as VisualSettings;
+      console.log("this.reactRoot: ", this.reactRoot);
+
+      const currentRow = dataView.table.rows[0];
+
+      const ytd_index = this.GetColumnsIndex(dataView, "YTD");
+      const yff_index = this.GetColumnsIndex(dataView, "FyFore");
+      const gpy_index = this.GetColumnsIndex(dataView, "GOPY");
+      const name_index = this.GetColumnsIndex(dataView, "TypeName");
+      console.log("name_index：", name_index);
+      console.log("dataView.table:", dataView.table);
+      console.log(
+        "dataView.table.rows[0][name_index].toString():",
+        dataView.table.rows[0][name_index].toString()
+      );
+      const typeName =
+        name_index === -1
+          ? "Group"
+          : dataView.table.rows[0][name_index].toString();
+
+      const ytd: number =
+        ytd_index === -1
+          ? Number.NaN
+          : Number(currentRow[ytd_index].toString());
+      const yff: number =
+        yff_index === -1
+          ? Number.NaN
+          : Number(currentRow[yff_index].toString());
+      const gpy: number =
+        gpy_index === -1
+          ? Number.NaN
+          : Number(currentRow[gpy_index].toString());
+      console.log("this.settings: ", this.settings);
+      const containerBackgroudColor = this.settings.groupCell.backgroundColor;
+      const borderRadius = this.settings.groupCell.borderRadius;
+
+      ReactCircleCard.update({
+        ytd_css_property: this.GetCssProperty(ytd),
+        yff_css_property: this.GetCssProperty(yff),
+        gpy_css_property: this.GetCssProperty(gpy),
+        typeName: typeName,
+        backgroudColor: containerBackgroudColor,
+        borderRadius: borderRadius,
+        ytdvalue: this.formatValueString(ytd),
+        yffvalue: this.formatValueString(yff),
+        gpyvalue: this.formatValueString(gpy),
+      });
+    } else {
+      this.clear();
     }
+  }
 
-    public update(options: VisualUpdateOptions) {
-        if (options.dataViews && options.dataViews[0]) {
-            const dataView: DataView = options.dataViews[0];
+  private formatValueString(number: number) {
+    return isNaN(number) ? NA : Math.round(number * 100).toString() + "%";
+  }
 
-            this.settings = VisualSettings.parse(dataView) as VisualSettings;
+  private clear() {
+    ReactCircleCard.update(initialState);
+  }
 
-            const currentRow = dataView.table.rows[0];
-
-            const ytd_index = this.GetColumnsIndex(dataView, "YTD");
-            const yff_index = this.GetColumnsIndex(dataView, "FyFore");
-            const gpy_index = this.GetColumnsIndex(dataView, "GOPY");
-            const name_index = this.GetColumnsIndex(dataView, "TypeName");
-
-            var ytd: number = ytd_index === -1 ? Number.NaN : Number(currentRow[ytd_index].toString());
-            var yff: number = yff_index === -1 ? Number.NaN : Number(currentRow[yff_index].toString());
-            var gpy: number = gpy_index === -1 ? Number.NaN : Number(currentRow[gpy_index].toString());
-            ReactCircleCard.update({
-                ytd_css_property: this.GetCssProperty(ytd),
-                yff_css_property: this.GetCssProperty(yff),
-                gpy_css_property: this.GetCssProperty(gpy),
-                typeName: name_index === -1 ? "Group" : dataView.table.rows[0][name_index].toString(),
-                ytdvalue: this.formatValueString(ytd),
-                yffvalue: this.formatValueString(yff),
-                gpyvalue: this.formatValueString(gpy),
-            });
-        } else {
-            this.clear();
-        }
+  private GetCssProperty(val: number) {
+    if (val >= 0) {
+      return { backgroundColor: "#6ECEB2", color: "#ffffff" }; //绿色
+    } else if (val < 0 && val >= -0.1) {
+      return { backgroundColor: "#F1BA24", color: "#ffffff" }; //黄色
+    } else if (val < -0.1) {
+      return { backgroundColor: "#EB8B43", color: "#ffffff" }; //橙色
+    } else {
+      //N.A
+      return { backgroundColor: "#EEF1F4", color: "#0A3B32" };
     }
+  }
 
-    private formatValueString(number: number) {
-        return isNaN(number) ? NA : Math.round((number * 100)).toString() + "%";
+  private GetColumnsIndex(dataView, displayName) {
+    var columns = dataView.table.columns;
+    console.log("GetColumnsIndex columns:", columns);
+    for (var i = 0, len = columns.length; i < len; i++) {
+      if (columns[i].roles.hasOwnProperty(displayName)) {
+        return columns[i].index;
+      }
     }
+    return -1;
+  }
 
-    private clear() {
-        ReactCircleCard.update(initialState);
-    }
-
-    private GetCssProperty(val: number) {
-        if (val >= 0) {
-            return { backgroundColor: "#6ECEB2", color: "#ffffff" };//绿色
-        } else if (val < 0 && val >= -0.10) {
-            return { backgroundColor: "#F1BA24", color: "#ffffff" };//黄色
-        } else if (val < -0.10) {
-            return { backgroundColor: "#EB8B43", color: "#ffffff" };//橙色
-        } else {//N.A
-            return { backgroundColor: "#EEF1F4", color: "#0A3B32" };
-        }
-    }
-
-    private GetColumnsIndex(dataView, displayName) {
-        var columns = dataView.table.columns;
-        for (var i = 0, len = columns.length; i < len; i++) {
-            if (columns[i].roles.hasOwnProperty(displayName)) {
-                return columns[i].index;
-            }
-        }
-        return -1;
-    }
-
-    public enumerateObjectInstances(
-        options: EnumerateVisualObjectInstancesOptions
-    ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-
-        return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
-    }
+  public enumerateObjectInstances(
+    options: EnumerateVisualObjectInstancesOptions
+  ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
+    console.log("enumerateObjectInstances:");
+    console.log("options:", options);
+    return VisualSettings.enumerateObjectInstances(
+      this.settings || VisualSettings.getDefault(),
+      options
+    );
+  }
 }

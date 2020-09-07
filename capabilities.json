@@ -1,81 +1,105 @@
 {
-    "dataRoles": [
-        {
-            "displayName": "TypeName",
-            "name": "TypeName",
-            "displayNameKey": "TypeName",
-            "kind": "Grouping"
-        },
-        {
-            "displayName": "YTD",
-            "name": "YTD",
-            "displayNameKey": "YTD",
-            "kind": "Measure"
-        },
-        {
-            "displayName": "FY Fore",
-            "name": "FyFore",
-            "displayNameKey": "FyFore",
-            "kind": "Measure"
-        },
-        {
-            "displayName": "Growth over Past year",
-            "name": "GOPY",
-            "displayNameKey": "GOPY",
-            "kind": "Measure"
-        }
-    ],
-    "objects": {},
-    "dataViewMappings": [
-        {
-            "conditions": [
-                {
-                    "YTD": {
-                        "max": 1
-                    }
-                },
-                {
-                    "TypeName": {
-                        "max": 1
-                    }
-                },
-                {
-                    "FyFore": {
-                        "max": 1
-                    }
-                },
-                {
-                    "GOPY": {
-                        "max": 1
-                    }
-                }
-            ],
-            "table": {
-                "rows": {
-                    "select": [
-                        {
-                            "for": {
-                                "in": "TypeName"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "YTD"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "FyFore"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "GOPY"
-                            }
-                        }
-                    ]
-                }
+  "dataRoles": [
+    {
+      "displayName": "TypeName",
+      "name": "TypeName",
+      "displayNameKey": "TypeName",
+      "kind": "Grouping"
+    },
+    {
+      "displayName": "YTD",
+      "name": "YTD",
+      "displayNameKey": "YTD",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "FY Fore",
+      "name": "FyFore",
+      "displayNameKey": "FyFore",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "Growth over Past year",
+      "name": "GOPY",
+      "displayNameKey": "GOPY",
+      "kind": "Measure"
+    }
+  ],
+  "objects": {
+    "groupCell": {
+      "displayName": "Group Cell",
+      "properties": {
+        "backgroundColor": {
+          "displayName": "background-color",
+          "description": "The fill color of the group-cell background.",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
             }
+          }
+        },
+        "borderRadius": {
+          "displayName": "border-radius",
+          "description": "The border radius of the group-cell.",
+          "type": {
+            "numeric": true
+          }
         }
-    ]
+      }
+    }
+  },
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "YTD": {
+            "max": 1
+          }
+        },
+        {
+          "TypeName": {
+            "max": 1
+          }
+        },
+        {
+          "FyFore": {
+            "max": 1
+          }
+        },
+        {
+          "GOPY": {
+            "max": 1
+          }
+        }
+      ],
+      "table": {
+        "rows": {
+          "select": [
+            {
+              "for": {
+                "in": "TypeName"
+              }
+            },
+            {
+              "for": {
+                "in": "YTD"
+              }
+            },
+            {
+              "for": {
+                "in": "FyFore"
+              }
+            },
+            {
+              "for": {
+                "in": "GOPY"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
 }

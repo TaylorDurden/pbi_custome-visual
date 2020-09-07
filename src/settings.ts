@@ -3,10 +3,11 @@
 import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
-export class CircleSettings {
-    public BackgroundColor: string = "white";
+export class GroupCellSettings {
+  public backgroundColor: string = "white";
+  public borderRadius: number = 0;
 }
 
 export class VisualSettings extends DataViewObjectsParser {
-    public Background_color: CircleSettings = new CircleSettings();
+  public groupCell: GroupCellSettings = new GroupCellSettings();
 }
