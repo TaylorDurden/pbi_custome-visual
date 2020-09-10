@@ -1,19 +1,21 @@
 import { Visual } from "../../src/visual";
-var powerbiKey = "powerbi";
-var powerbi = window[powerbiKey];
+import powerbiVisualsApi from "powerbi-visuals-api"
+import IVisualPlugin = powerbiVisualsApi.visuals.plugins.IVisualPlugin
+import VisualConstructorOptions = powerbiVisualsApi.extensibility.visual.VisualConstructorOptions
+var powerbiKey: any = "powerbi";
+var powerbi: any = window[powerbiKey];
 
-var rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG = {
+var rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG: IVisualPlugin = {
     name: 'rateperformance9A345A4BE9344FC09BC15E03F98169C0_DEBUG',
     displayName: 'rate-performance',
     class: 'Visual',
-    version: '1.0.0',
     apiVersion: '2.6.0',
-    create: (options) => {
+    create: (options: VisualConstructorOptions) => {
         if (Visual) {
             return new Visual(options);
         }
 
-        console.error('Visual instance not found');
+        throw 'Visual instance not found';
     },
     custom: true
 };

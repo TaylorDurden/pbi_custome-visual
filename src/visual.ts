@@ -100,19 +100,19 @@ export class Visual implements IVisual {
     if (val >= 0) {
       return {
         fontSize: font_size,
-        backgroundColor: "#6ECEB2",
+        backgroundColor: "#63b1bc",
         color: "#ffffff",
       }; //绿色
     } else if (val < 0 && val >= -0.1) {
       return {
         fontSize: font_size,
-        backgroundColor: "#F1BA24",
+        backgroundColor: "#e8d166",
         color: "#ffffff",
       }; //黄色
     } else if (val < -0.1) {
       return {
         fontSize: font_size,
-        backgroundColor: "#EB8B43",
+        backgroundColor: "#e66c37",
         color: "#ffffff",
       }; //橙色
     } else {
