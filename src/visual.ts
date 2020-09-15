@@ -70,6 +70,7 @@ export class Visual implements IVisual {
       const borderRadius = this.settings.groupCell.borderRadius;
       const groupName = this.settings.groupCell.groupName;
 
+      console.log("update:" + groupName + ";" + typeName);
       GroupCellCard.update({
         ytd_css_property: this.GetCssProperty(ytd),
         yff_css_property: this.GetCssProperty(yff),
@@ -140,10 +141,15 @@ export class Visual implements IVisual {
     options: EnumerateVisualObjectInstancesOptions
   ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
     // console.log("enumerateObjectInstances:");
-    // console.log("options:", options);
-    return VisualSettings.enumerateObjectInstances(
-      this.settings || VisualSettings.getDefault(),
-      options
-    );
+    console.log("options:", options);
+    console.log("this.settings:", this.settings);
+    console.log("VisualSettings.getDefault():", VisualSettings.getDefault());
+    // return VisualSettings.enumerateObjectInstances(
+    //   this.settings || VisualSettings.getDefault(),
+    //   options
+    // );
+    const settings: VisualSettings =
+      this.settings || <VisualSettings>VisualSettings.getDefault();
+    return VisualSettings.enumerateObjectInstances(settings, options);
   }
 }

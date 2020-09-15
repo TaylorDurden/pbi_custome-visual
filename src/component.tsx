@@ -185,7 +185,7 @@ export class GroupCellCard extends React.Component<{}, State> {
   }
 
   private canTransform2Country(type, typename) {
-    if (!typename || typename !== NA) return false;
+    if (!typename || typename === NA) return false;
     var data =
       type === "icon" ? CountryMap.Icon : CountryMap.backgroundMapImage;
     for (var i = 0, len = data.length; i < len; i++) {
@@ -222,6 +222,7 @@ export class GroupCellCard extends React.Component<{}, State> {
   }
 
   private getTypeName(groupName, typeName) {
+    console.log(groupName + ";" + typeName);
     if (groupName) return groupName;
     return typeName || typeName !== NA ? typeName : NA;
   }
@@ -249,14 +250,17 @@ export class GroupCellCard extends React.Component<{}, State> {
     const gpybgc: React.CSSProperties = { ...gpy_css_property };
 
     var backgroundImage =
-      typeName.toUpperCase() === NA
+      // typeName.toUpperCase() === NA
+      !this.canTransform2Country("map", groupName || typeName)
         ? {
             backgroundColor: backgroudColor,
             borderRadius: borderRadius,
           }
         : {
             backgroundImage:
-              "url(" + this.GetIconOrMapPath("map", typeName) + ")",
+              "url(" +
+              this.GetIconOrMapPath("map", groupName || typeName) +
+              ")",
             backgroundSize: "contain",
             backgroundPosition: "50% 20%",
             backgroundOrigin: "content",
@@ -266,14 +270,14 @@ export class GroupCellCard extends React.Component<{}, State> {
           };
 
     console.log("backgroundImage css style: ", backgroundImage);
-    console.log("typeName: ", typeName);
+    console.log("typeName: ", typeName + ";groupName:" + groupName);
     return (
       <div className="container" style={backgroundImage}>
         <div className="title-top label">
-          {this.canTransform2Country("icon", typeName) ? (
+          {this.canTransform2Country("icon", groupName || typeName) ? (
             <img
               className="title-icon"
-              src={this.GetIconOrMapPath("icon", typeName)}
+              src={this.GetIconOrMapPath("icon", groupName || typeName)}
             ></img>
           ) : (
             ""
