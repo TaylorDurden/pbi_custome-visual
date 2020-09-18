@@ -1,4 +1,5 @@
 import * as React from "react";
+import { State } from "./componentState";
 
 const DEFAULT_CSS_PROPERTY = { backgroundColor: "#fff", color: "#000" };
 const NA = "N.A";
@@ -137,19 +138,6 @@ const CountryMap = {
   ],
 };
 
-export interface State {
-  typeName: string;
-  ytdvalue: string;
-  ytd_css_property: any;
-  yffvalue: string;
-  yff_css_property: any;
-  gpyvalue: string;
-  gpy_css_property: any;
-  backgroudColor: any;
-  borderRadius: number;
-  groupName: string;
-}
-
 export const initialState: State = {
   typeName: NA,
   ytdvalue: NA,
@@ -222,7 +210,6 @@ export class GroupCellCard extends React.Component<{}, State> {
   }
 
   private getTypeName(groupName, typeName) {
-    console.log(groupName + ";" + typeName);
     if (groupName) return groupName;
     return typeName || typeName !== NA ? typeName : NA;
   }
@@ -269,59 +256,59 @@ export class GroupCellCard extends React.Component<{}, State> {
             borderRadius: borderRadius,
           };
 
-    console.log("backgroundImage css style: ", backgroundImage);
-    console.log("typeName: ", typeName + ";groupName:" + groupName);
     return (
       <div className="container" style={backgroundImage}>
-        <div className="title-top label">
-          {this.canTransform2Country("icon", groupName || typeName) ? (
-            <img
-              className="title-icon"
-              src={this.GetIconOrMapPath("icon", groupName || typeName)}
-            ></img>
-          ) : (
-            ""
-          )}
-          <span>{this.getTypeName(groupName, typeName)}</span>
-        </div>
-        <div className="label">Performance over Plan</div>
-        <div className="label">
-          <div style={{ float: "left", width: "50%" }}>
-            <div
-              style={{
-                float: "right",
-                width: "70px",
-                textAlign: "center",
-                margin: "0 5px",
-              }}
-            >
-              <p className="value-view" style={ytdbgc}>
-                {ytdvalue}
-              </p>
-              <p className="value-label">YTD</p>
+        <div className="parentStyle">
+          <div className="title-top label">
+            {this.canTransform2Country("icon", groupName || typeName) ? (
+              <img
+                className="title-icon"
+                src={this.GetIconOrMapPath("icon", groupName || typeName)}
+              ></img>
+            ) : (
+              ""
+            )}
+            <span>{this.getTypeName(groupName, typeName)}</span>
+          </div>
+          <div className="label">Performance over Plan</div>
+          <div className="label">
+            <div style={{ float: "left", width: "50%" }}>
+              <div
+                style={{
+                  float: "right",
+                  width: "70px",
+                  textAlign: "center",
+                  margin: "0 5px",
+                }}
+              >
+                <p className="value-view" style={ytdbgc}>
+                  {ytdvalue}
+                </p>
+                <p className="value-label">YTD</p>
+              </div>
+            </div>
+            <div style={{ float: "right", width: "50%" }}>
+              <div
+                style={{
+                  float: "left",
+                  width: "70px",
+                  textAlign: "center",
+                  margin: "0 5px",
+                }}
+              >
+                <p className="value-view" style={fyybgc}>
+                  {yffvalue}
+                </p>
+                <p className="value-label">FY Fore</p>
+              </div>
             </div>
           </div>
-          <div style={{ float: "right", width: "50%" }}>
-            <div
-              style={{
-                float: "left",
-                width: "70px",
-                textAlign: "center",
-                margin: "0 5px",
-              }}
-            >
-              <p className="value-view" style={fyybgc}>
-                {yffvalue}
-              </p>
-              <p className="value-label">FY Fore</p>
-            </div>
+          <div className="label">Growth over Past year</div>
+          <div className="label">
+            <span className="value-view" style={gpybgc}>
+              {gpyvalue}
+            </span>
           </div>
-        </div>
-        <div className="label">Growth over Past year</div>
-        <div className="label">
-          <span className="value-view" style={gpybgc}>
-            {gpyvalue}
-          </span>
         </div>
       </div>
     );
